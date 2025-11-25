@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 900px;
+    height: 500px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border-radius: 20px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* ===== LEFT BOX ===== */
+
+.left-box {
+    width: 50%;
+    background: white;
+    padding: 40px;
+}
+
+.left-box h2 {
+    margin-bottom: 25px;
+}
+
+.left-box form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+}
+
+.terms {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0 20px;
+}
+
+.signup-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #5f2eea, #3b82f6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.signup-btn:hover {
+    transform: scale(1.03);
+}
+
+/* Social icons */
+.social-icons {
+    margin-top: 25px;
+    display: flex;
+    gap: 25px;
+}
+
+.social-icons img {
+    width: 28px;
+    filter: grayscale(100%);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.social-icons img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.12);
+}
+
+/* ===== RIGHT BOX ===== */
+
+.right-box {
+    width: 50%;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.right-box h2 {
+    font-size: 26px;
+}
+
+.right-box p {
+    margin: 10px 0 30px;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.login-btn {
+    padding: 10px 30px;
+    font-size: 17px;
+    border-radius: 20px;
+    color: white;
+    background: transparent;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.login-btn:hover {
+    background: white;
+    color: #2575fc;
+}
