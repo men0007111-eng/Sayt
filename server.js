@@ -44,7 +44,11 @@ const fs = require("fs");
 app.post("/register", (req, res) => {
     const { name, email, password } = req.body;
 
-    // Baza o‘qish
+   const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log("Server running on port " + port);
+});
+ // Baza o‘qish
     let users = JSON.parse(fs.readFileSync("users.json", "utf8"));
 
     // Email band yoki yo‘qligini tekshirish
