@@ -1,0 +1,93 @@
+/* === FON VA ASOSIY USLUB === */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #0F172A, #000000);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    overflow: hidden;
+}
+
+/* === LOGO === */
+.logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #0089FF, #00FF8F);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 800;
+    text-shadow: 0 0 10px white;
+    margin-bottom: 20px;
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
+/* === TITUL MATN === */
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    animation: fadeIn 2s ease;
+}
+
+/* Typewriter animatsiya */
+.typewriter {
+    overflow: hidden;
+    border-right: 2px solid #00E1FF;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 4s steps(40) forwards, blink 0.6s infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 320px }
+}
+
+@keyframes blink {
+    50% { border-color: transparent }
+}
+
+/* === SUBTITLE === */
+.subtitle {
+    font-size: 16px;
+    color: #ffffffb0;
+    text-align: center;
+    max-width: 360px;
+    animation: fadeIn 3s ease;
+    margin-bottom: 25px;
+}
+
+/* === LOADER ANIMATSIYA === */
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 5px solid #0059ff30;
+    border-top-color: #00D9FF;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Fade in effekt */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
