@@ -1,49 +1,133 @@
-<!DOCTYPE html>
-<html lang="uz">
+<!DOCTYPE html>  <html lang="uz">  
+<head>  
+  <meta charset="utf-8" />  
+  <meta name="viewport" content="width=device-width,initial-scale=1" />  
+  <title>Login — Welcome</title>  
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login / Sign Up</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — Welcome</title>
+
+  <!-- CSSni ulash -->
+  <link rel="stylesheet" href="style.css">
 </head>
+</head>  
+<body>  
+  <main class="card" role="main" aria-labelledby="login-title">  
+    <div class="logo">  
+      <div class="mark">W</div>  
+      <div>  
+        <div style="font-weight:700">welcome</div>  
+        <div style="font-size:12px;color:var(--muted)">Kirish sahifasi</div>  
+      </div>  
+    </div>  <h1 id="login-title">Hisobingizga kirish</h1>  
+<p class="lead">Elektron pochta va parolingizni kiriting. Yoki ijtimoiy tarmoq orqali kirishingiz mumkin.</p>  
 
-<body>
-    <div class="container">
+<form id="loginForm" novalidate>  
+  <div class="field">  
+    <label for="email">Email</label>  
+    <input id="email" name="email" type="email" placeholder="ism@pochta.com" required />  
+    <div id="emailError" class="error" aria-live="polite" style="display:none"></div>  
+  </div>  
 
-        <!-- Left SIGN UP -->
-        <div class="left-box">
-            <h2>Sign Up</h2>
+  <div class="field">  
+    <label for="password">Parol</label>  
+    <input id="password" name="password" type="password" placeholder="Parolingiz" minlength="6" required />  
+    <div id="passError" class="error" aria-live="polite" style="display:none"></div>  
+  </div>  
 
-            <form>
-                <input type="text" placeholder="ACE" required>
-                <input type="email" placeholder="email@gmail.com" required>
-                <input type="password" placeholder="Password" required>
-                <input type="password" placeholder="Confirm Password" required>
+  <div class="actions">  
+    <label class="checkbox"><input type="checkbox" id="remember" /> Eslab qolinsin</label>  
+    <a class="muted-link" href="forgot-password.html">Parolni unutdingizmi?</a>  
+  </div>  
+    
+  <div style="margin-top:18px">
+    <label for="login">kirish</label>
+    <a class="muted-link" href="sayt.html">saytga oʻtish</a>  
+  </div>
 
-                <label class="terms">
-                    <input type="checkbox"> I accept the terms & conditions
-                </label>
+<div style="text-align:center; margin-top:18px; font-size:14px;">  
+  Akkountingiz yo‘qmi?   
+  <a href="register.html" style="color:var(--accent); font-weight:600; text-decoration:none;">  
+    Ro‘yxatdan o‘ting  
+  </a>  
+</div>  <div class="socials" aria-hidden="true">
 
-                <button class="signup-btn">Sign Up</button>
-            </form>
+<button type="button" onclick="alert('Google bilan kirish — demo')">Google</button>
+<button type="button" onclick="alert('Facebook bilan kirish — demo')">Facebook</button>
 
-            <div class="social-icons">
-                <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png">
-                <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png">
-                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png">
-                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png">
-            </div>
-        </div>
-
-        <!-- Right LOGIN -->
-        <div class="right-box">
-            <h2>Already have an account?</h2>
-            <p>Login to your account!</p>
-
-            <button class="login-btn">Login</button>
-        </div>
-
-    </div>
-
-</body>
+  <button class="apple-btn" type="button" onclick="alert('Apple bilan kirish — demo')">  
+    <span class="apple-logo"></span> Sign in with Apple  
+  </button>  
+</div>  
+      </div>  
+    </form>  
+  </main>    <script>  
+    // Oddiy mijoz tomonida tekshirish va yuborish namuna  
+    const form = document.getElementById('loginForm');  
+    const email = document.getElementById('email');  
+    const password = document.getElementById('password');  
+    const emailError = document.getElementById('emailError');  
+    const passError = document.getElementById('passError');  
+    const formFeedback = document.getElementById('formFeedback');  
+    const submitBtn = document.getElementById('submitBtn');  
+  
+    function validateEmailValue(value){  
+      // Oddiy email tekshiruvi  
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);  
+    }  
+  
+    form.addEventListener('submit', async (e) => {  
+      e.preventDefault();  
+      // Reset  
+      emailError.style.display = 'none';  
+      passError.style.display = 'none';  
+      formFeedback.style.display = 'none';  
+  
+      let ok = true;  
+      if(!validateEmailValue(email.value.trim())){  
+        emailError.textContent = 'Iltimos, toʻgʻri email kiriting.';  
+        emailError.style.display = 'block';  
+        ok = false;  
+      }  
+      if(password.value.length < 6){  
+        passError.textContent = 'Parol kamida 6 ta belgidan boʻlishi kerak.';  
+        passError.style.display = 'block';  
+        ok = false;  
+      }  
+      if(!ok) return;  
+  
+      // Demo uchun: mijoz tomonida "loading"  
+      submitBtn.disabled = true;  
+      submitBtn.textContent = 'Kirish...';  
+  
+      try {  
+        // Agar backend bo'lsa, quyidagi fetch olib ishlatish mumkin:  
+        // const resp = await fetch('/api/login', {  
+        //   method: 'POST',  
+        //   headers: {'Content-Type':'application/json'},  
+        //   body: JSON.stringify({email: email.value.trim(), password: password.value})  
+        // });  
+        // const data = await resp.json();  
+        // if(!resp.ok) throw new Error(data.message || 'Server error');  
+  
+        // Hozir demo: agar email demo@demo.com va parol 123456 bo'lsa muvaffaqiyat  
+        await new Promise(r=>setTimeout(r,800)); // sun'iy kechikish  
+        if(email.value.trim() === 'demo@demo.com' && password.value === '123456'){  
+          // Muvaffaqiyat: redirect yoki token saqlash  
+          alert('Kirish muvaffaqiyatli!'); // real loyihada redirect qiling: window.location = '/dashboard'  
+          email.value=''; password.value='';  
+        } else {  
+          formFeedback.textContent = 'Email yoki parol notoʻgʻri. (Demo: demo@demo.com / 123456 )';  
+          formFeedback.style.display = 'block';  
+        }  
+      } catch(err){  
+        formFeedback.textContent = 'Xato yuz berdi: ' + (err.message || 'Nomaʼlum xato');  
+        formFeedback.style.display = 'block';  
+      } finally {  
+        submitBtn.disabled = false;  
+        submitBtn.textContent = 'Kirish';  
+      }  
+    });  
+  </script>  </body>  
 </html>
